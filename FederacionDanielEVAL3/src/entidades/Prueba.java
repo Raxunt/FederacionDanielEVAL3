@@ -18,6 +18,7 @@ public class Prueba {
 	private Colegiado[] arbitraje = new Colegiado[3];
 	private Resultado resultado = null;
 	private Participante[] participantes;
+	private Patrocinador patrocinador;
 
 	public Prueba(long id, String nombre, LocalDate fecha, Lugar lugar, boolean ind) {
 		this.id = id;
@@ -66,6 +67,41 @@ public class Prueba {
 		this.participantes = participantes;
 		this.arbitraje = arbitraje;
 		this.resultado = res;
+	}
+	
+
+	public Prueba(long id, String nombre, LocalDate fecha, boolean individual, Lugar lugar, Colegiado[] arbitraje,
+			Resultado resultado, Participante[] participantes, Patrocinador patrocinador) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.fecha = fecha;
+		this.individual = individual;
+		this.lugar = lugar;
+		this.arbitraje = arbitraje;
+		this.resultado = resultado;
+		this.participantes = participantes;
+		this.patrocinador = patrocinador;
+	}
+
+	public Prueba(long id, String nombre, LocalDate fecha, Lugar lugar, boolean ind, Patrocinador patrocinador) {
+	
+	}
+
+	public Colegiado[] getArbitraje() {
+		return arbitraje;
+	}
+
+	public void setArbitraje(Colegiado[] arbitraje) {
+		this.arbitraje = arbitraje;
+	}
+
+	public Patrocinador getPatrocinador() {
+		return patrocinador;
+	}
+
+	public void setPatrocinadores(Patrocinador patrocinador) {
+		this.patrocinador = patrocinador;
 	}
 
 	public Resultado getResultado() {
@@ -213,12 +249,12 @@ public class Prueba {
 	 * “<idParticipante>”, con el dorsal “<dorsal>” por la calle “<calle>”
 	 * Plata#<idPlata> “Tercer puesto: “<idParticipante>”, con el dorsal “<dorsal>”
 	 * por la calle “<calle> Bronce#<idBronc>
-	 * 
+	 * patrocinador.getNombre
 	 */
 	@Override
 	public String toString() {
 		String ret = "";
-		ret += "" + id + "." + nombre + " (" + fecha.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + " en " + lugar.getNombre() + ") de tipo " + (this.isIndividual()?"individual":"colectiva")+"\n";
+		ret += "" + id + "." + nombre + " Nombre del patrocinador: " + patrocinador.getNombre() +" (" + fecha.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + " en " + lugar.getNombre() + ") de tipo " + (this.isIndividual()?"individual":"colectiva")+"\n";
 		if(this.hayEquipoArbitral()) {
 			ret += this.nombresEquipoArbitral();
 		}
@@ -239,6 +275,7 @@ public class Prueba {
 		long id = -1;
 		String nombre = "";
 		Lugar lugar;
+		Patrocinador patrocinador = null;
 		boolean valido = false;
 		do {
 			System.out.println("Introduzca el id de la nueva prueba:");
@@ -280,8 +317,12 @@ public class Prueba {
 				valido = true;
 		} while (!valido);
 		lugar = Lugar.values()[idLugar];
+		
+		System.out.println("Introduzca ahora los datos del Patrocinador:");
+		in = new Scanner(System.in);
+		patrocinador = Patrocinador.nuevoPatrocinador();
 
-		ret = new Prueba(id, nombre, fecha, lugar, ind);
+		ret = new Prueba(id, nombre, fecha, lugar, ind, patrocinador);
 		return ret;
 	}
 

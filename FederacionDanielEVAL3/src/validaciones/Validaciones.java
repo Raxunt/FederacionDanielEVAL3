@@ -20,8 +20,36 @@ public class Validaciones {
 	 */
 	public static boolean validarTelefono(String tfn) {
 		return tfn.trim().chars().allMatch(Character::isDigit);
+		
+		
 	}
-
+	public static boolean validarNombreWeb(String nombre) {
+		return false; //TO-DO
+	}
+	/**
+	 * Valida que una cadena de caracteres contiene letras o nímeros únicamente,
+	 * longitud entre 3 y 150 caractreres
+	 * 
+	 * @param nombre cadena con el nombre a validar
+	 * @return true si es un nombre válido o false en caso contrario
+	 */
+	public static boolean validarNombrePatrocinador(String nombrePatrocinador) {
+		// regEx general para cadena de caracteres con longitud entre 3 y 150 caracteres,
+		// aceptando dígitos, letras MAYUS y minúsculasy números
+		// Pattern patron = Pattern.compile("[
+		// 0-9A-Z]{3,150}");
+		Pattern patron = Pattern.compile("[  0-9A-Za-z]{3,150}");
+		Matcher comprobacion = patron.matcher(nombrePatrocinador);
+		return comprobacion.matches();
+	}
+	
+	
+	public static boolean validarDotacion(double dotacion) {
+		if (dotacion < 0)
+			return false;
+		return true;
+	}
+	
 	/**
 	 * Valida que una cadena de caracteres contiene letras o espacios únicamente,
 	 * longitud entre 3 y 50 caractreres
