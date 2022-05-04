@@ -1,5 +1,6 @@
 package utils;
 
+import java.text.DecimalFormat;
 import java.text.Normalizer;
 import java.text.Normalizer.Form;
 import java.time.LocalDate;
@@ -12,49 +13,10 @@ import java.util.Scanner;
 import validaciones.Validaciones;
 
 /**
- *
- * @author luis
- */
+*
+* @author luis
+*/
 public class Utilidades extends Validaciones {
-	
-	
-	
-	//Examen 10 Ejercicio 1
-	/**
-	 * Función que pide al usuario que introduce un valor para una hora a partir de
-	 * 3 valores para la hora, minutos y segundos. Si los valores introducidos no
-	 * producen una hora correctas, avisa al usuario y le pide que los
-	 * introduzca de nuevo. Si no lo consigue, devolverá null
-	 *
-	 * @return una hora de la clase java.time.LocalTime o null si hay
-	 *         error
-	 */
-	public static java.time.LocalTime leerHora() {
-		LocalTime ret = null;
-		int hora, min, seg;
-		boolean correcto = false;
-		Scanner in;
-		do {
-			System.out.println("Introduzca un valor para la hora  (0...23)");
-			in = new Scanner(System.in, "ISO-8859-1");
-			hora = in.nextInt();
-			System.out.println("Introduzca un valor para los minutos (0...59)");
-			in = new Scanner(System.in, "ISO-8859-1");
-			min = in.nextInt();
-			System.out.println("Introduzca un valor para los segundos (0...59)");
-			in = new Scanner(System.in, "ISO-8859-1");
-			seg = in.nextInt();
-
-			try {
-				ret = LocalTime.of(hora, min, seg);
-				correcto = true;
-			} catch (Exception e) {
-				System.out.println("Hora introducida incorrecta.");
-				correcto = false;
-			}
-		} while (!correcto);
-		return ret;
-	}
 
 	/**
 	 * Función que pide al usuario que introduzca 's' o 'S' para Sí o 'n' o 'N' para
@@ -98,13 +60,18 @@ public class Utilidades extends Validaciones {
 		boolean correcto = false;
 		Scanner in;
 		do {
-			System.out.println("Introduzca un valor decimal (xx.xx)");
+			System.out.println("Introduzca un valor decimal (xx,xxxxx)");
 			in = new Scanner(System.in, "ISO-8859-1");
 			try {
 				ret = in.nextDouble();
 				correcto = true;
 			} catch (InputMismatchException ime) {
 				System.out.println("Formato introducido incorrecto.");
+				correcto = false;
+			}
+			catch (Exception e) {
+				System.out.println("ERROR: Se produjo una excepcion:"+e.getMessage());
+				e.printStackTrace();
 				correcto = false;
 			}
 		} while (!correcto);
@@ -146,7 +113,7 @@ public class Utilidades extends Validaciones {
 		return ret;
 	}
 
-	//Examen 3 Ejercicio 1
+	// Examen 3 Ejercicio 1
 	/**
 	 * Función que pide al usuario que introduce un valor para una fecha a partir de
 	 * 3 enteros para el día, mes y año respectivamente Y una hora a partir de ptrps
@@ -194,7 +161,43 @@ public class Utilidades extends Validaciones {
 		return ret;
 	}
 
-	//Examen 4 Ejercicio 1
+	/// Examen 10 Ejercicio 1
+	/**
+	 * Función que pide al usuario que introduce un valor para una hora a partir de
+	 * 3 enteros para la hora del dica, minuto y segundo respectivamente. Si los
+	 * valores introducidos no producen una hora correcta, avisa al usuario y le
+	 * pide que los introduzca de nuevo. Si no lo consigue, devolverá null
+	 *
+	 * @return una hora de la clase java.time.LocalTime o null si hay error
+	 */
+	public static java.time.LocalTime leerHora() {
+		java.time.LocalTime ret = null;
+		int hora, minuto, segundo;
+		boolean correcto = false;
+		Scanner in;
+		do {
+			try {
+				System.out.println("Introduzca un valor para la hora del dia (0...23)");
+				in = new Scanner(System.in, "ISO-8859-1");
+				hora = in.nextInt();
+				System.out.println("Introduzca un valor para el minuto (0...59)");
+				in = new Scanner(System.in, "ISO-8859-1");
+				minuto = in.nextInt();
+				System.out.println("Introduzca un valor para el segundo");
+				in = new Scanner(System.in, "ISO-8859-1");
+				segundo = in.nextInt();
+
+				ret = LocalTime.of(hora, minuto, segundo);
+				correcto = true;
+			} catch (Exception e) {
+				System.out.println("Hora introducida incorrecta. Primero ingrese la hora, luego el minuto y finalmente el segundo.");
+				correcto = false;
+			}
+		} while (!correcto);
+		return ret;
+	}
+
+	// Examen 4 Ejercicio 1
 	/**
 	 * Función que quita los espacios en blanco del comienzo y del final de una
 	 * cadena de caracteres que se pasa como parámetro y, además, sustituye todas
@@ -216,7 +219,7 @@ public class Utilidades extends Validaciones {
 		return Normalizer.normalize(string, Form.NFC).replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
 	}
 
-	//Examen 5 Ejercicio 1
+	// Examen 5 Ejercicio 1
 	/**
 	 * Función que pide al usuario que introduzca un valor decimal por la entrada
 	 * estándar. Si el formato introducido no es correcto o fuera de rango, o si se
@@ -254,5 +257,30 @@ public class Utilidades extends Validaciones {
 			}
 		} while (!correcto);
 		return Float.parseFloat("" + ret);
+	}
+
+	/***
+	 * Funcion que se le pasa un valor double y devuelve su cadena de caracteres
+	 * asociada con 2 decimales únicamente
+	 * 
+	 * @param valor
+	 * @return
+	 */
+	public static String mostrarDouble2Decimales(double valor) {
+		DecimalFormat df = new DecimalFormat("#.##");
+		return df.format(valor);
+	}
+
+	/***
+	 * Funcion que devuelve un valor real(double o float) con el nº de decimales que
+	 * se quiera, pasando ambos adatos como parámetros a la función
+	 * 
+	 * @param numero          el valor real con decimales
+	 * @param numeroDecimales el nº de decimales que deseamos
+	 * @return el valor del primer argumento redondeado al nº de decimales que
+	 *         marque el segundo argumento
+	 */
+	public static Double formatearDecimales(Double numero, Integer numeroDecimales) {
+		return Math.round(numero * Math.pow(10, numeroDecimales)) / Math.pow(10, numeroDecimales);
 	}
 }

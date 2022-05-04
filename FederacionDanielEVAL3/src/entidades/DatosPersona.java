@@ -3,8 +3,7 @@ package entidades;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -16,6 +15,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
+import comparadores.ComparadorAlfabetico;
 import utils.ConexBD;
 import utils.Datos;
 import utils.Utilidades;
