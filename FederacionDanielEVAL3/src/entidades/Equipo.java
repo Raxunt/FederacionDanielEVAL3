@@ -141,5 +141,11 @@ public class Equipo extends Participante {
 		ret = new Equipo(id, nombre, anio, manager, atletasArray);
 		return ret;
 	}
+	public String mostrarBasico() {
+		String ret = "";
+		ret += this.id + ". " + this.nombre + this.atletas  + this.manager.getId() + this.anioinscripcion ;
+		return ret;
+	}
+
 
 }

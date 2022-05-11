@@ -2,6 +2,7 @@ package validaciones;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -263,5 +264,16 @@ public class Validaciones {
 			return false;
 		else
 			return true;
+	}
+	/***
+	 * Valida que la fecha que se pasa como argumento sea posterior al dia actual + 1 mes
+	 * @param fecha
+	 * @return true si la fecha es posterior a hoy +1 mes o false en caso contrario
+	 */
+	public static boolean validarFechaNuevaPrueba(Date fecha) {
+		LocalDate hoyMas1MesLD = LocalDate.now().plusMonths(1);
+		java.util.Date hoyMas1Mes = new Date(hoyMas1MesLD.getYear() - 1900, hoyMas1MesLD.getMonthValue() - 1, hoyMas1MesLD.getDayOfMonth());
+		return fecha.after(hoyMas1Mes);
+		
 	}
 }

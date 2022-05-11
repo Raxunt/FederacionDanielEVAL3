@@ -17,7 +17,7 @@ public class Atleta extends Participante {
 	private float peso;
 
 	private DatosPersona persona;
-
+	private long idEquipo;
 	public Atleta() {
 	}
 
@@ -51,6 +51,24 @@ public class Atleta extends Participante {
 		this.altura = a.altura;
 		this.peso = a.peso;
 		this.persona = Datos.buscarPersonaPorId(a.idAtleta);
+	}
+
+	public Atleta(long id, int dorsal, char calle, long idAtleta, float altura, float peso, DatosPersona persona,
+			long idEquipo) {
+		super(id, dorsal, calle);
+		this.idAtleta = idAtleta;
+		this.altura = altura;
+		this.peso = peso;
+		this.persona = persona;
+		this.idEquipo = idEquipo;
+	}
+
+	public long getIdEquipo() {
+		return idEquipo;
+	}
+
+	public void setIdEquipo(long idEquipo) {
+		this.idEquipo = idEquipo;
 	}
 
 	public float getAltura() {
