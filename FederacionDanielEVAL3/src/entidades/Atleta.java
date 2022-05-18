@@ -166,5 +166,10 @@ public class Atleta extends Participante {
 				+ persona.getFechaNac().getYear() + "\t" + peso + "Kgs. " + altura + "m.";
 	}
 
+	public void setAtleta(Atleta atleta) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 }

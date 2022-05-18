@@ -276,4 +276,21 @@ public class Validaciones {
 		return fecha.after(hoyMas1Mes);
 		
 	}
+	public static boolean validarNombrePrueba(String nombre) {
+		Pattern patron = Pattern.compile("[ A-Za-zñÑáéíóúÁÉÍÓÚäëïöüÄËÏÖÜ0123456789-]{5,150}");
+		Matcher comprobacion = patron.matcher(nombre);
+		return comprobacion.matches();
+	}
+
+	/***
+	 * Valida que la fecha que se pasa como argumento sea posterior al dia actual + 1 mes
+	 * @param fecha
+	 * @return true si la fecha es posterior a hoy +1 mes o false en caso contrario
+	 */
+	
+
+	public static boolean validarFechaNuevoAtleta(Date fecha) {
+		Date min = new Date(1960-1900, 1, 1);
+		return fecha.after(min);
+	}
 }

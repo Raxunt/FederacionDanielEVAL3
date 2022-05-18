@@ -19,6 +19,10 @@ public class Tiempo implements Comparable<Tiempo>{
 		this.numcentsegundo = numcentsegundo;
 	}
 
+	public Tiempo() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getNumhoras() {
 		return numhoras;
 	}
@@ -117,6 +121,66 @@ public class Tiempo implements Comparable<Tiempo>{
 	@Override
 	public int compareTo(Tiempo o) {
 		
+		return 0;
+	}
+
+	public int getspinnerHora_1() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int getspinnerMinutos_1() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int getspinnerSegundos_1() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int getspinnerCentesimas_1() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int getspinnerHora_2() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int getspinnerMinutos_2() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int getspinnerSegundos_2() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int getspinnerCentesimas_2() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int getspinnerHora_3() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int getspinnerMinutos_3() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int getspinnerSegundos_3() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int getspinnerCentesimas_3() {
+		// TODO Auto-generated method stub
 		return 0;
 	}
 

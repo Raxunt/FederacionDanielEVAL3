@@ -88,6 +88,10 @@ public class Prueba {
 	
 	}
 
+	public Prueba() {
+	
+	}
+
 	public Colegiado[] getArbitraje() {
 		return arbitraje;
 	}
@@ -325,5 +329,27 @@ public class Prueba {
 		ret = new Prueba(id, nombre, fecha, lugar, ind, patrocinador);
 		return ret;
 	}
+
+	public void setPatrocinador(Patrocinador patroc) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setAtleta(Atleta atleta) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setMetal(Metal metal) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public String cerrarPrueba(int idprueba) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 
 }

@@ -32,5 +32,9 @@ public abstract class Metal {
 	public void setAsignada(boolean asignada) {
 		this.asignada = asignada;
 	}
+	public void setMetal(Metal metal) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }
